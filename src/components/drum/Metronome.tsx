@@ -126,7 +126,7 @@ export function BpmControls({ settings, update }: { settings: SongSettings; upda
   const step = (n: number) => update({ bpm: clampBpm(settings.bpm + n) });
   return (
     <Panel title="Andamento">
-      <Slider value={[settings.bpm]} min={30} max={300} step={1} onValueChange={([v]) => update({ bpm: v })} className="py-4" />
+      <Slider value={[settings.bpm]} min={30} max={300} step={1} onValueChange={([v]) => update({ bpm: v ?? settings.bpm })} className="py-4" />
       <div className="mt-3 grid grid-cols-4 gap-2">
         {[-5, -1, 1, 5].map((n) => (
           <motion.button

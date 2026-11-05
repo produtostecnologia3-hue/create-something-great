@@ -95,7 +95,7 @@ export function MixerSheet({ open, onOpenChange, mixer, setMixer }: { open: bool
                 <span>{r.label}</span>
                 <span className="font-mono text-muted-foreground">{Math.round(mixer[r.key] * 100)}</span>
               </div>
-              <Slider value={[mixer[r.key] * 100]} max={100} step={1} onValueChange={([v]) => setMixer({ ...mixer, [r.key]: v / 100 })} />
+              <Slider value={[mixer[r.key] * 100]} max={100} step={1} onValueChange={([v]) => setMixer({ ...mixer, [r.key]: (v ?? 0) / 100 })} />
             </div>
           ))}
         </div>
