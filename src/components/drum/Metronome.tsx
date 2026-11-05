@@ -119,7 +119,7 @@ export function BpmControls({ settings, update }: { settings: SongSettings; upda
     const now = performance.now();
     taps.current = [...taps.current.filter((t) => now - t < 2500), now].slice(-6);
     if (taps.current.length >= 2) {
-      const d = taps.current.slice(1).map((t, i) => t - taps.current[i]);
+      const d = taps.current.slice(1).map((t, i) => t - (taps.current[i] ?? t));
       update({ bpm: clampBpm(60000 / (d.reduce((a, b) => a + b, 0) / d.length)) });
     }
   };
